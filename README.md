@@ -6,7 +6,7 @@
 
 
 # Library
-
+https://github.com/LeoAndo/android-myokashi-apps/blob/main/MyOkashi/app/build.gradle#L34:L63<br>
 
 # Capture (Pixel4 API Tiramisu)
 
