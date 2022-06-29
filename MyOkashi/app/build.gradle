@@ -8,7 +8,7 @@ android {
 
     defaultConfig {
         applicationId "com.leoleo2.myokashi"
-        minSdk 31
+        minSdk 26
         targetSdk 32
         versionCode 1
         versionName "1.0"
@@ -47,17 +47,16 @@ dependencies {
     implementation "com.squareup.okhttp3:okhttp:${okhttp}"
     implementation "com.squareup.okhttp3:logging-interceptor:${okhttp}"
     implementation "com.squareup.retrofit2:retrofit:${retrofit}"
-    implementation "com.squareup.retrofit2:converter-gson:${retrofit}"
-    implementation "com.google.code.gson:gson:2.8.9"
+    implementation "com.squareup.retrofit2:converter-moshi:${retrofit}"
+    // JSON
+    implementation "com.squareup.moshi:moshi-kotlin:1.13.0"
     // Coroutine.
-    def kotlinCoroutine = '1.6.1'
+    def kotlinCoroutine = '1.6.3'
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:${kotlinCoroutine}"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:${kotlinCoroutine}"
     // Image
-    def glide = '4.13.0'
-    implementation "com.github.bumptech.glide:glide:${glide}"
-    annotationProcessor "com.github.bumptech.glide:compiler:${glide}"
+    implementation "com.github.bumptech.glide:glide:4.13.2"
     // ViewModel
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.1"
-    implementation "androidx.activity:activity-ktx:1.4.0" // kotlin version 1.4.32に対応
+    implementation "androidx.activity:activity-ktx:1.4.0"
 }

@@ -1,19 +1,17 @@
 package com.leoleo2.myokashi
 
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import java.util.concurrent.TimeUnit
 
 object NetworkModule {
-    val okashiService: OkashiService =
-        Retrofit.Builder()
-            .callFactory { request -> okHttpClient.newCall(request) }
-            .baseUrl("https://sysbird.jp/")
-            .addConverterFactory(GsonConverterFactory.create()).build()
-            .create(OkashiService::class.java)
-
+    private val moshi = Moshi.Builder()
+        .add(KotlinJsonAdapterFactory())
+        .build()
     private val okHttpClient by lazy {
         val builder = OkHttpClient.Builder()
             .connectTimeout(15, TimeUnit.SECONDS)
@@ -29,4 +27,10 @@ object NetworkModule {
         httpLoggingInterceptor.level = HttpLoggingInterceptor.Level.BODY
         httpLoggingInterceptor
     }
+    val okashiService: OkashiService =
+        Retrofit.Builder()
+            .client(okHttpClient)
+            .baseUrl("https://sysbird.jp/")
+            .addConverterFactory(MoshiConverterFactory.create(moshi)).build()
+            .create(OkashiService::class.java)
 }
