@@ -13,4 +13,11 @@ class OkashiRepository constructor(
             apiService.searchOkashi(keyword = keyword)
         }
     }
+/*
+    suspend fun searchOkashi2(keyword: String): List<OkashiDomainModel>? {
+        return withContext(dispatcher) {
+            apiService.searchOkashi(keyword = keyword).toOkashiDomainModels()
+        }
+    }
+ */
 }
