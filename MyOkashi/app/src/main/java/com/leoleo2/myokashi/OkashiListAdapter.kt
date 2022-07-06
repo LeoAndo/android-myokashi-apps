@@ -40,10 +40,7 @@ private val ITEM_CALLBACK = object : DiffUtil.ItemCallback<OkashiDomainModel>() 
         return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(
-        oldItem: OkashiDomainModel,
-        newItem: OkashiDomainModel
-    ): Boolean {
+    override fun areContentsTheSame(oldItem: OkashiDomainModel, newItem: OkashiDomainModel): Boolean {
         return oldItem == newItem
     }
 }
