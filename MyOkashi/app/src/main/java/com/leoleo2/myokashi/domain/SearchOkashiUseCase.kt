@@ -6,7 +6,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class SearchOkashiUseCase(
-    private val dispatcher: CoroutineDispatcher = Dispatchers.IO,
+    private val dispatcher: CoroutineDispatcher = Dispatchers.Default,
     private val repository: OkashiRepository = OkashiRepository()
 ) {
     //  invokeで処理を書き、関数オブジェクトとして扱う
